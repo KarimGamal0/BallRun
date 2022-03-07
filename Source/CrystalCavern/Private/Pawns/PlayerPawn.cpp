@@ -20,6 +20,10 @@ APlayerPawn::APlayerPawn()
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
+
+
+	//Intialize Variables
+	Torque = 12.0f;
 }
 
 // Called when the game starts or when spawned
@@ -41,5 +45,16 @@ void APlayerPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	InputComponent->BindAxis("MoveForward", this, &APlayerPawn::MoveForward);
+	InputComponent->BindAxis("MoveRight", this, &APlayerPawn::MoveRight);
 }
 
+void APlayerPawn::MoveForward(float value)
+{
+	Mesh->AddTorqueInRadians(FVector(0.0f, value * Torque, 0.0f), "", true);
+}
+
+void APlayerPawn::MoveRight(float value)
+{
+	Mesh->AddTorqueInRadians(FVector(value * Torque, 0.0f, 0.0f), "", true);
+}
