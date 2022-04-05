@@ -7,8 +7,9 @@
 #include "PlayerPawn.generated.h"
 
 
-class USpringArmComponent;
 class UCameraComponent;
+class UHealthComponent;
+class USpringArmComponent;
 UCLASS()
 class CRYSTALCAVERN_API APlayerPawn : public APawn
 {
@@ -40,11 +41,12 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
 		UCameraComponent* Camera;
 
+	UPROPERTY(VisibleAnyWhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
+		UHealthComponent* HealthComponent;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = true))
 		float Torque;
 
-
 	void MoveForward(float value);
 	void MoveRight(float value);
-
 };

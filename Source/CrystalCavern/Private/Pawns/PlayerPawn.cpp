@@ -2,8 +2,9 @@
 
 
 #include "Pawns/PlayerPawn.h"
-#include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h" 
+#include "Components/HealthComponent.h"
+#include "GameFramework/SpringArmComponent.h"
 
 // Sets default values
 APlayerPawn::APlayerPawn()
@@ -20,6 +21,8 @@ APlayerPawn::APlayerPawn()
 
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
+
+	HealthComponent = CreateDefaultSubobject<UHealthComponent>(TEXT("Health Component"));
 
 
 	//Intialize Variables

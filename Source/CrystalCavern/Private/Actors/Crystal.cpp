@@ -2,10 +2,10 @@
 
 
 #include "Actors/Crystal.h"
-#include "Components/SphereComponent.h"
-#include "Kismet/GameplayStatics.h" 
-#include "Components/TimelineComponent.h"
 #include "Components/PointLightComponent.h"
+#include "Components/SphereComponent.h"
+#include "Components/TimelineComponent.h"
+#include "Kismet/GameplayStatics.h" 
 
 // Sets default values
 ACrystal::ACrystal()
@@ -131,7 +131,6 @@ void ACrystal::LightIntensityCrystal(float output) {
 
 	if (APointLight)
 	{
-		UE_LOG(LogTemp, Error, TEXT("light"));
 		APointLight->SetIntensity(PointLightEndIntensity);
 	}
 }
